@@ -4,6 +4,8 @@
 
 package clucn.disc.dsm.wsierra.model;
 
+import net.openhft.hashing.LongHashFunction;
+
 import org.threeten.bp.ZonedDateTime;
 
 public final class News {
@@ -63,7 +65,19 @@ public final class News {
 
     public News(String title, String source, String author, String url, String ulrImage, String description, String content, ZonedDateTime publishedAt) {
         // FIXME: add the hash ( title + source + author)
-        this.id = 0L;
+
+        //Title replace
+        if(title==null){
+            title = "No Title";
+        }
+
+        // Source validation
+        if(source==null || source.length() <= 4){
+            throw new IllegalArgumentException("Source no valid");
+        }
+        // Hash call.
+        this.id = LongHashFunction.xx().hashChars(title + "|" + source);
+
         this.title = title;
         this.source = source;
         this.author = author;
@@ -71,6 +85,11 @@ public final class News {
         this.ulrImage = ulrImage;
         this.description = description;
         this.content = content;
+
+        //PublishedAt Validation
+        if(publishedAt == null){
+            throw new IllegalArgumentException("The PublishedAt needed!");
+        }
         this.publishedAt = publishedAt;
     }
 
