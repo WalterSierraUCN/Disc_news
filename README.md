@@ -16,6 +16,14 @@ package externals* #ffcccc{
         }
     }
 
+    package net.openhft.hashing{
+        class LongHashFunction{
+            ...
+        }
+    }
+
+
+
 }
 
 package clucn.disc.dsn.wsierra{
@@ -42,6 +50,7 @@ package clucn.disc.dsn.wsierra{
              }
 
              News *--> "1" ZonedDateTime : - publishedAt
+             News --* LongHashFunction : - **use**
     }
 
     package services #ccccff {
