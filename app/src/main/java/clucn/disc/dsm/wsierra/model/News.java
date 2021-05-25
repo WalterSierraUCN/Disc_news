@@ -66,21 +66,28 @@ public final class News {
     public News(String title, String source, String author, String url, String ulrImage, String description, String content, ZonedDateTime publishedAt) {
         // FIXME: add the hash ( title + source + author)
 
+
+
         //Title replace
-        if(title==null){
-            title = "No Title";
-        }
+        this.title= (title != null && title.length() > 0) ? title: "No Title";
+
 
         // Source validation
-        if(source==null || source.length() <= 4){
-            throw new IllegalArgumentException("Source no valid");
+        if(source==null){
+            throw new IllegalArgumentException("Source was null");
         }
-        // Hash call.
-        this.id = LongHashFunction.xx().hashChars(title + "|" + source);
 
-        this.title = title;
+        if( source.length() <= 4){
+            throw new IllegalArgumentException("Source size was <= 4");
+        }
         this.source = source;
-        this.author = author;
+        //Author
+        this.author = ( author !=null ) ? author:"No Author";
+
+        // Hash call.
+        this.id = LongHashFunction.xx().hashChars(this.getTitle() + "|" + this.getSource() + "|" + this.getAuthor()
+        );
+
         this.url = url;
         this.ulrImage = ulrImage;
         this.description = description;
