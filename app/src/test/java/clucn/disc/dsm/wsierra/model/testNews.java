@@ -6,40 +6,62 @@ package clucn.disc.dsm.wsierra.model;
 //import org.junit.jupiter.api.Test;
 
 
+import com.github.javafaker.Faker;
+
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
 
 public final class testNews {
+
+    /**
+     * The Logger
+     */
+    private static final Logger log = LoggerFactory.getLogger(testNews.class);
+
     /**
      *  Testing the constructor.
      */
+
+    /**
+     *
+     * @param obj to transform
+     * @return the String view of the object
+     */
+    private static String toString(final Object obj){
+        return ToStringBuilder.reflectionToString(obj, ToStringStyle.MULTI_LINE_STYLE);
+    }
     @Test
     public void testConstructor(){
+
+        log.debug("Starting the testConstructor");
+
+        // Generate test data
+        Faker faker = new Faker();
 
     // Test: valid data
     {
       News news =
           new News(
-              "The Title",
-              "The Source",
-              "The Author",
-              "The Url",
-              "The Image Url",
-              "The Description",
-              "The Content",
-              // FIXME: Check the current zone in Chile
+              faker.book().title(),
+              faker.book().publisher(),
+              faker.book().author(),
+              faker.internet().url(),
+              faker.internet().url(),
+              faker.book().genre(),
+              faker.dune().quote(),
               ZonedDateTime.now(ZoneId.of("-3")));
+
+      log.info("TheNews: {}." + toString(news));
+
+
         // Testing the internal class
         Assertions.assertNotNull(news.getId());
-        Assertions.assertEquals("The Title",news.getTitle());
-        Assertions.assertEquals("The Source",news.getSource());
-        Assertions.assertEquals("The Author",news.getAuthor());
-        Assertions.assertEquals("The Url",news.getUrl());
-        Assertions.assertEquals("The Image Url",news.getUlrImage());
-        Assertions.assertEquals("The Description",news.getDescription());
-        Assertions.assertEquals("The Content",news.getContent());
         Assertions.assertNotNull(news.getPublishedAt());
         // TODO: Complete the test.
     }

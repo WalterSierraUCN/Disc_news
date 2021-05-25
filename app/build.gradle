@@ -46,6 +46,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.30'
 
     //JavaFaker
+    // https://github.com/DiUS/java-faker
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
 
     //Zero-Allocation Hashing
