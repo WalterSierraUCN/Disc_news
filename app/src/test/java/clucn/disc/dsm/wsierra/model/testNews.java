@@ -8,16 +8,16 @@ package clucn.disc.dsm.wsierra.model;
 
 import com.github.javafaker.Faker;
 
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
 
-public final class testNews {
+import clucn.disc.dsm.wsierra.BaseTest;
+
+public final class testNews extends BaseTest {
 
     /**
      * The Logger
@@ -28,14 +28,6 @@ public final class testNews {
      *  Testing the constructor.
      */
 
-    /**
-     *
-     * @param obj to transform
-     * @return the String view of the object
-     */
-    private static String toString(final Object obj){
-        return ToStringBuilder.reflectionToString(obj, ToStringStyle.MULTI_LINE_STYLE);
-    }
     @Test
     public void testConstructor(){
 
