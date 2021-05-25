@@ -40,8 +40,15 @@ public final class ContractsImplFaker implements Contracts {
 
         }
 
-        // Error! Warning!
-        return Collections.unmodifiableList(this.listNews);
+        // Check the list
+        if(size > this.listNews.size()){
+            throw new IndexOutOfBoundsException("Size > The current size");
+        }
+
+        // Return the unmodifiable list
+        return Collections.unmodifiableList(
+                this.listNews.subList(this.listNews.size()-size, this.listNews.size())
+        );
     }
 
     /**
@@ -51,15 +58,24 @@ public final class ContractsImplFaker implements Contracts {
     @Override
     public void save(News news) {
 
+        // Nullity test
         if(news == null){
             throw new IllegalArgumentException("Need news != null");
         }
+
+        // No duplicates allowed
         for(News n : this.listNews){
 
             if( n != null && n.getId().equals(news.getId())){
                 throw new IllegalArgumentException("News already in the list");
             }
         }
+
+        // Insert news at the end
         this.listNews.add(news);
+
+        // Sort the list by publishedAt
+        this.listNews.sort((a,b) -> b.getPublishedAt().compareTo(a.getPublishedAt()));
+
     }
 }
