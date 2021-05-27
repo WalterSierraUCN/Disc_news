@@ -55,6 +55,10 @@ public final class testNews extends BaseTest {
         // Testing the internal class
         Assertions.assertNotNull(news.getId());
         Assertions.assertNotNull(news.getPublishedAt());
+        Assertions.assertNotNull(news.getUrl());
+        Assertions.assertNotNull(news.getUlrImage());
+        Assertions.assertNotNull(news.getDescription());
+        Assertions.assertNotNull(news.getContent());
         // TODO: Complete the test.
     }
 
