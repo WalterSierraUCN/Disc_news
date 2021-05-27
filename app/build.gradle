@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "cl.ucn.disc.dsm.fcortez"
+        applicationId "cl.ucn.disc.dsm.wsierra"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
@@ -47,7 +47,7 @@ dependencies {
 
     //JavaFaker
     // https://github.com/DiUS/java-faker
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 
     //Zero-Allocation Hashing
     //https://github.com/OpenHFT/Zero-Allocation-Hashing
