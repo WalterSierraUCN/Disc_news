@@ -7,6 +7,9 @@
  */
 package clucn.disc.dsm.wsierra.services;
 
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZonedDateTime;
+import com.github.javafaker.Faker;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +26,25 @@ public final class ContractsImplFaker implements Contracts {
      * The Constructor.
      */
     public ContractsImplFaker() {
-        // Nothing here
+        // Generate test data
+        Faker faker = new Faker();
+        int N = 20;
+
+        for(int i = 0; i < N;i++){
+
+            // Test: valid data
+                News news =
+                        new News(
+                               faker.book().title(),
+                                faker.book().publisher(),
+                                faker.book().author(),
+                                faker.internet().url(),
+                                faker.internet().url(),
+                                faker.book().genre(),
+                                faker.dune().quote(),
+                                ZonedDateTime.now(ZoneId.of("-3")));
+                this.save(news);
+        }
     }
 
     /**

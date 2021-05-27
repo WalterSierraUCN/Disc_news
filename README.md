@@ -21,7 +21,11 @@ package externals* #ffcccc{
             ...
         }
     }
-
+    package com.github.javafaker{
+        class Faker{
+            ...
+        }
+    }
 
 
 }
@@ -59,7 +63,16 @@ package clucn.disc.dsn.wsierra{
             +  save(news: News) : void
         }
         Contracts ..> News: <<use>>
+
+        class ContractsImplFaker {
+                - listNews : List<News>
+            }
+
+            ContractsImplFaker ..|> Contracts
+            ContractsImplFaker ..> Faker : <<use>>
     }
+
+
 }
 
 @enduml
