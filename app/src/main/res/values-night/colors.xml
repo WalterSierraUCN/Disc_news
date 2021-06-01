@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="toolbarBackground">@color/Lime_800</color>
-    <color name="toolbarSubTitleTextColor">@color/Lime_200</color>
-    <color name="toolbarTitleTextColor">@color/Lime_50</color>
+    <color name="toolbarBackground">@color/Lime_900</color>
+    <color name="toolbarSubTitleTextColor">@color/Lime_600</color>
+    <color name="toolbarTitleTextColor">@color/Lime_300</color>
 </resources>

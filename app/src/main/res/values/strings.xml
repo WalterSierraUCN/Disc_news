@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-    <string name="app_name">DiscNews</string>
+    <string name="app_name">The Disc News</string>
+    <string name="app_title">@string/app_name</string>
+    <string name="app_subtitle">Desarrollo Soluciones Moviles</string>
+
 </resources>
