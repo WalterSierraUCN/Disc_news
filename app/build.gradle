@@ -11,20 +11,61 @@ android {
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        release {
+        debug{
+            // Enable debugger
+            debuggable true
+            // Compress xml
             minifyEnabled false
+            // Compress resources
+            shrinkResources false
+            // Zip stuff
+            zipAlignEnabled false
+            // Compress png images
+            crunchPngs false
+            // Add ".d" to version name
+            versionNameSuffix ".d"
+        }
+        release {
+            // Enable debugger
+            debuggable false
+            // Compress xml
+            minifyEnabled true
+            // Compress resources
+            shrinkResources true
+            // Zip stuff
+            zipAlignEnabled true
+            // Compress png images
+            crunchPngs true
+            // Add ".r" to version name
+            versionNameSuffix ".r"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Override versionCode and versionName
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.versionCodeOverride = project.ext.buildTimestamp
+            output.versionNameOverride = project.ext.buildFullName
+        }
+
+    }
+
+    buildFeatures{
+        // Process build config
+        buildConfig = true
+        // Enable easy view Binding
+        viewBinding = true
     }
 }
 

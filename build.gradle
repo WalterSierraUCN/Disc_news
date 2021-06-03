@@ -1,4 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+def YEAR_WEEK = new Date().format("yyww").toInteger()
+def DAY       = new Date().format("u").toInteger()
+def HOUR_MINUTE = new Date().format("HHmm").toInteger()
+
+def BUILD_TIMESTAMP = 100000 * YEAR_WEEK + 10000 * DAY + DAY + HOUR_MINUTE
+def BUILD_NAME = "Daphnis"
+def BUILD_VERSION_FULLNAME = "${BUILD_NAME} v${BUILD_TIMESTAMP}"
+
+logger.lifecycle("BUILD_TIMESTAMP: ${BUILD_TIMESTAMP}")
+
+
+
 apply plugin: "com.github.ben-manes.versions"
 
 buildscript {
@@ -17,6 +30,14 @@ buildscript {
 }
 
 allprojects {
+
+    // Share name and values
+    ext.buildTimestamp = BUILD_TIMESTAMP
+    ext.buildName = BUILD_NAME
+    ext.buildFullName = BUILD_VERSION_FULLNAME
+
+    //buildDir = "${System.env.TEMP}" //gradle-build// ${rootProject}
+
     repositories {
         google()
         mavenCentral()
