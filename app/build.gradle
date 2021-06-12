@@ -93,4 +93,10 @@ dependencies {
     //Zero-Allocation Hashing
     //https://github.com/OpenHFT/Zero-Allocation-Hashing
     implementation 'net.openhft:zero-allocation-hashing:0.12'
+
+    // https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout?hl=es
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // https://developer.android.com/jetpack/androidx/releases/recyclerview?hl=es
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
 }
