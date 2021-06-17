@@ -99,4 +99,11 @@ dependencies {
 
     // https://developer.android.com/jetpack/androidx/releases/recyclerview?hl=es
     implementation "androidx.recyclerview:recyclerview:1.2.0"
+
+    // https://mvnrepository.com/artifact/org.ocpsoft.prettytime/prettytime
+    implementation "org.ocpsoft.prettytime:prettytime:5.0.1.Final"
+
+    // https://frescolib.org/docs/index.html
+    implementation 'com.facebook.fresco:fresco:2.5.0'
+
 }
