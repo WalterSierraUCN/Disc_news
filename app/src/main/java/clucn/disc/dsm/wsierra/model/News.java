@@ -77,8 +77,8 @@ public final class News {
             throw new IllegalArgumentException("Source was null");
         }
 
-        if( source.length() <= 4){
-            throw new IllegalArgumentException("Source size was <= 4 [" + source +"]");
+        if( source.length() <= 2){
+            throw new IllegalArgumentException("Source size was <= 2 [" + source +"]");
         }
         this.source = source;
         //Author
