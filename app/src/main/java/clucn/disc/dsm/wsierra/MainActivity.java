@@ -1,15 +1,16 @@
 package clucn.disc.dsm.wsierra;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Bundle;
-import android.util.Log;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.Executors;
 
 import clucn.disc.dsm.wsierra.databinding.ActivityMainBinding;
 import clucn.disc.dsm.wsierra.model.NewsViewModel;
@@ -57,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         // Swipe.
         this.binding.amSrlRefresh.setOnRefreshListener(()->{
             log.debug("Refreshing news... ");
-            this.newsViewModel.refresh();
+
+                this.newsViewModel.refresh();
+
         });
 
         // Instantiate the Adapter.
