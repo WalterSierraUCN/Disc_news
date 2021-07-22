@@ -11,7 +11,7 @@
     android:orientation="horizontal">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        app:roundedCornerRadus="5dp"
+        app:roundedCornerRadius="5dp"
         android:id="@+id/rn_sdv_image"
         app:actualImageResource="@mipmap/ic_launcher"
         android:paddingTop="2dp"
