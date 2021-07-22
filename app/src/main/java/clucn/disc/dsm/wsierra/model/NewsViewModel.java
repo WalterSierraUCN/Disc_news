@@ -5,6 +5,8 @@
 package clucn.disc.dsm.wsierra.model;
 
 import android.app.Application;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -14,9 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import clucn.disc.dsm.wsierra.services.Contracts;
 import clucn.disc.dsm.wsierra.services.ContractsImplFaker;
+import clucn.disc.dsm.wsierra.services.newsapi.NewsAPIService;
 
 /**
  * The News View Model
@@ -34,7 +38,7 @@ public final class NewsViewModel extends AndroidViewModel{
      *  The Contract.
      */
 
-    private final Contracts contracts = new ContractsImplFaker();
+    private final Contracts contracts = new NewsAPIService();
 
     /**
      *  The News's list
@@ -72,10 +76,20 @@ public final class NewsViewModel extends AndroidViewModel{
         if (this.theNews.getValue() == null || this.theNews.getValue().size() == 0){
            log.warn("No news, fetching from contracts");
        }
+        {
 
-       // Get news from backend
-        this.theNews.setValue(
-                this.contracts.retrieveNews(10));
+            // Background thread
+            Executors.newSingleThreadExecutor().execute(()-> {
 
+            List<News> news = this.contracts.retrieveNews(50);
+
+            new Handler(Looper.getMainLooper()).post(() ->{
+
+                // Get news from backend
+                this.theNews.setValue(news);
+            });
+        });
+
+        }
     }
 }
